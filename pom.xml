@@ -26,11 +26,19 @@
           <target>1.7</target>
         </configuration>
       </plugin>
-<plugin>
-  <groupId>org.eclipse.jetty</groupId>
-  <artifactId>jetty-maven-plugin</artifactId>
-  <version>9.4.12-SNAPSHOT</version>
-</plugin>
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>${jetty-version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <configuration>
+            <mainClass>org.eclipse.jetty.demo.EventServer</mainClass>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
