@@ -1,0 +1,4 @@
+org/eclipse/jetty/demo/EventServer.class
+org/eclipse/jetty/demo/EventClient.class
+org/eclipse/jetty/demo/EventSocket.class
+org/eclipse/jetty/demo/EventServlet.class
