@@ -24,13 +24,8 @@ public class EventSocket extends WebSocketAdapter
           try {
             byte[] buffer = new byte[4000];
             if (shell.isAlive()) {
-              try {
-                Thread.sleep(100);
-              } catch (InterruptedException e) {
-                System.out.println("sleep interrupted.");
-              }
               int no = pair.input.available();
-              while (no > 0) {
+              if (no > 0) {
                 int n = pair.input.read(buffer, 0, Math.min(no,  buffer.length));
                 String formatted = new String(buffer).replaceAll("\n","\r\n");
                 sess.getRemote().sendString(formatted);
@@ -59,18 +54,10 @@ public class EventSocket extends WebSocketAdapter
             pair.output.write(message.getBytes());
             pair.output.flush();
           }
-          try {
-            Thread.sleep(100);
-          } catch (InterruptedException e) {
-            e.printStackTrace();
-          }
           int no = pair.input.available();
-          while (no > 0) {
-            int n = pair.input.read(buffer, 0, Math.min(no,  buffer.length));
-            String formatted = new String(buffer).replaceAll("\n","\r\n");
-            session.getRemote().sendString(formatted);
-            no = pair.input.available();
-          }
+          int n = pair.input.read(buffer, 0, Math.min(no,  buffer.length));
+          String formatted = new String(buffer).replaceAll("\n","\r\n");
+          session.getRemote().sendString(formatted);
         }
       } catch (Exception e) {
         e.printStackTrace();

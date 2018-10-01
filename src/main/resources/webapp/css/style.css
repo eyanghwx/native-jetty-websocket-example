@@ -1,3 +1,16 @@
+html {
+  height: 100%;
+}
+
 body {
   background-color: #2B2B2B;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+}
+
+#terminal-container {
+  height: 100%;
 }

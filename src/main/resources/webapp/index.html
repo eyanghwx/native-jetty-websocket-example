@@ -20,8 +20,6 @@
         Terminal.applyAddon(winptyCompat);
         Terminal.applyAddon(fullscreen);
         var term = new Terminal({
-                cols: 80,
-                rows: 50,
                 fontSize: 13,
                 fontFamily: '"Menlo for Powerline", Menlo, Consolas, "Liberation Mono", Courier, monospace',
                 theme: {
@@ -71,6 +69,14 @@
         term.fit();
         term.toggleFullScreen(true);
         term.focus();
+        function ping() {
+          if (sock.readyState === WebSocket.OPEN) {
+            sock.send('\x00');
+          } else {
+            clearInterval(pingTimer);
+          }
+        }
+        var pingTimer = setInterval(ping, 100);
       </script>
     </body>
   </html>
