@@ -57,8 +57,8 @@
                 term.showOverlay(size.cols + 'x' + size.rows);
             }, 500);*/
         });
-      
-        var url = "ws://localhost:8080/events/",
+        var arr = window.location.href.split("/");
+        var url = "ws://"+arr[2]+"/events/",
             sock = new WebSocket(url);
         sock.addEventListener('open', function () {
           term.attach(sock, true, true);
@@ -76,7 +76,7 @@
             clearInterval(pingTimer);
           }
         }
-        var pingTimer = setInterval(ping, 100);
+        var pingTimer = setInterval(ping, 500);
       </script>
     </body>
   </html>

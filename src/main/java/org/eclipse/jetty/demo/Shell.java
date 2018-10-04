@@ -23,8 +23,11 @@ public class Shell {
 
   public Pair run() throws IOException {
     List<String> args = new ArrayList<String>();
-    args.add("bash");
-    args.add("-i");
+    args.add("/usr/local/hadoop-3.2.0-SNAPSHOT/bin/container-executor2");
+    args.add("--run-docker");
+    args.add("/tmp/test.cmd");
+    //args.add("bash");
+    //args.add("-i");
     ProcessBuilder build = new ProcessBuilder(args);
     build.redirectErrorStream(true);
     process = build.start();

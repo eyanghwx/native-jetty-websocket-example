@@ -50,7 +50,8 @@ public class EventSocket extends WebSocketAdapter
         byte[] buffer = new byte[4000];
         if (shell.isAlive()) {
           int ni = message.length();
-          if (ni > 0) {
+          if (ni==1 && message.equals(Character.toString('\0'))) {
+          } else if (ni > 0) {
             pair.output.write(message.getBytes());
             pair.output.flush();
           }
